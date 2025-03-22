@@ -57,7 +57,7 @@
                       <Component id="jLabel6" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel5" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="90" max="32767" attributes="0"/>
+                  <EmptySpace pref="342" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -77,11 +77,6 @@
         <Component class="javax.swing.JLabel" name="jLabel5">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\pc\Documents\NetBeansProjects\Ride_glide\src\Ride_glide\Icon\logokk.png"/>
-            </Property>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>

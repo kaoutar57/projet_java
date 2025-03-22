@@ -132,7 +132,7 @@
                   <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
                   <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="150" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
               </Group>
@@ -148,9 +148,6 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\pc\Documents\NetBeansProjects\Ride_glide\src\Ride_glide\Icon\cus.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value=" Clients"/>
           </Properties>
         </Component>
@@ -161,9 +158,6 @@
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\pc\Documents\NetBeansProjects\Ride_glide\src\Ride_glide\Icon\car-key.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="R&#xe9;servations"/>
           </Properties>
@@ -176,9 +170,6 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\pc\Documents\NetBeansProjects\Ride_glide\src\Ride_glide\Icon\rencar.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Restitution des voitures"/>
           </Properties>
         </Component>
@@ -189,9 +180,6 @@
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\pc\Documents\NetBeansProjects\Ride_glide\src\Ride_glide\Icon\logout (1).png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Se d&#xe9;connecter"/>
           </Properties>
@@ -206,9 +194,6 @@
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\pc\Documents\NetBeansProjects\Ride_glide\src\Ride_glide\Icon\emp.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Admin"/>
           </Properties>

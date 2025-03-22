@@ -155,7 +155,7 @@ public class Reset extends javax.swing.JFrame {
          
     if(txtResetPass.getText().equals(txtVerResetPass.getText())){
     try{
-        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ride_glide", "root", "");
+        con = DriverManager.getConnection("jdbc:mysql://localhost:3307/java_database", "root", "");
 
         // Vérification de la valeur de 'user'
         System.out.println("Valeur de user: " + user);

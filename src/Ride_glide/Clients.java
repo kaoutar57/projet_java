@@ -1,20 +1,30 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Ride_glide;
 
-/**
- *
- * @author pc
- */
+// Importation des classes nécessaires pour la gestion de la base de données
+import java.io.IOException;
+import java.sql.Connection;  // Connexion à la base de données
+import java.sql.DriverManager;  // Pour obtenir une connexion
+import java.sql.Statement;  // Pour exécuter des requêtes
+import java.sql.ResultSet;  // Pour récupérer les résultats des requêtes
+import java.sql.SQLException;  // Pour gérer les exceptions liées aux bases de données
+
+// Importation des composants graphiques
+import javax.swing.JOptionPane;  // Pour afficher des messages à l'utilisateur
+import javax.swing.*;  // Pour le JPanel, JTable, etc.
+import javax.swing.table.DefaultTableModel;  // Pour les modèles de tableau dans JTable
+import java.sql.ResultSetMetaData;
+import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
 public class Clients extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Clients
-     */
-    public Clients() {
+    
+    public Clients() throws IOException {
         initComponents();
+        afficherClients(); 
     }
 
     /**
@@ -27,35 +37,40 @@ public class Clients extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
+        jButton5 = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        idclientjTextField1 = new javax.swing.JTextField();
+        emailclientjTextField6 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        nomclientjTextField2 = new javax.swing.JTextField();
+        ajouterclientjButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jTextField3 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        modifierclientjButton2 = new javax.swing.JButton();
+        prenomclientjTextField3 = new javax.swing.JTextField();
+        supprimerclientjButton3 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
-        jTextField4 = new javax.swing.JTextField();
+        adresseclientjTextField4 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        listeclientsjTable1 = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        numtelclientjTextField5 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        numpermisjTextField7 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1329, 781));
@@ -63,68 +78,104 @@ public class Clients extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(204, 0, 0));
         jPanel2.setPreferredSize(new java.awt.Dimension(254, 547));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton5.setBackground(new java.awt.Color(51, 51, 255));
+        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jButton5.setText("Se déconnecter");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jLabel13.setIcon(new javax.swing.ImageIcon("C:\\Users\\hp\\Documents\\NetBeansProjects\\projet_java\\src\\Ride_glide\\Icon\\logout (1).png")); // NOI18N
+        jLabel13.setText("jLabel13");
+
+        jLabel12.setIcon(new javax.swing.ImageIcon("C:\\Users\\hp\\Documents\\NetBeansProjects\\projet_java\\src\\Ride_glide\\Icon\\rencar.png")); // NOI18N
+        jLabel12.setText("jLabel12");
+
+        jLabel16.setIcon(new javax.swing.ImageIcon("C:\\Users\\hp\\Documents\\NetBeansProjects\\projet_java\\src\\Ride_glide\\Icon\\car-key.png")); // NOI18N
+        jLabel16.setText("jLabel16");
+
+        jLabel17.setIcon(new javax.swing.ImageIcon("C:\\Users\\hp\\Documents\\NetBeansProjects\\projet_java\\src\\Ride_glide\\Icon\\cus.png")); // NOI18N
+        jLabel17.setText("jLabel17");
+
+        jLabel19.setIcon(new javax.swing.ImageIcon("C:\\Users\\hp\\Documents\\NetBeansProjects\\projet_java\\src\\Ride_glide\\Icon\\emp.png")); // NOI18N
+        jLabel19.setText("jLabel19");
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc\\Documents\\NetBeansProjects\\Ride_glide\\src\\Ride_glide\\Icon\\cus.png")); // NOI18N
-        jLabel9.setText(" Clients");
+        jLabel9.setText("admin");
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc\\Documents\\NetBeansProjects\\Ride_glide\\src\\Ride_glide\\Icon\\car-key.png")); // NOI18N
-        jLabel11.setText("Réservations");
+        jLabel11.setText("Clients");
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc\\Documents\\NetBeansProjects\\Ride_glide\\src\\Ride_glide\\Icon\\rencar.png")); // NOI18N
-        jLabel12.setText("Restitution des voitures");
-
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc\\Documents\\NetBeansProjects\\Ride_glide\\src\\Ride_glide\\Icon\\logout (1).png")); // NOI18N
-        jLabel13.setText("Se déconnecter");
-
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc\\Documents\\NetBeansProjects\\Ride_glide\\src\\Ride_glide\\Icon\\emp.png")); // NOI18N
-        jLabel14.setText("Admin");
+        jLabel14.setText("Reservations");
+
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setText("Se deconnecter");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(jLabel18)
+                .addGap(98, 98, 98))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jLabel11)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton5))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel9)
+                                .addComponent(jLabel11)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(112, 112, 112)
-                .addComponent(jLabel14)
-                .addGap(60, 60, 60)
-                .addComponent(jLabel9)
-                .addGap(58, 58, 58)
-                .addComponent(jLabel11)
-                .addGap(64, 64, 64)
-                .addComponent(jLabel12)
+                .addGap(130, 130, 130)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel19)
+                                    .addComponent(jLabel9))
+                                .addGap(59, 59, 59)
+                                .addComponent(jLabel17))
+                            .addComponent(jLabel11))
+                        .addGap(46, 46, 46)
+                        .addComponent(jLabel16))
+                    .addComponent(jLabel14))
+                .addGap(63, 63, 63)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel18))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel13)
-                .addGap(138, 138, 138))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton5)
+                    .addComponent(jLabel13))
+                .addGap(160, 160, 160))
         );
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -154,66 +205,66 @@ public class Clients extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("émail");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        idclientjTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                idclientjTextField1ActionPerformed(evt);
             }
         });
 
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        emailclientjTextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                emailclientjTextField6ActionPerformed(evt);
             }
         });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("nom_client");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        nomclientjTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                nomclientjTextField2ActionPerformed(evt);
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(0, 204, 0));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ride_glide/Icon/addcus.png"))); // NOI18N
-        jButton1.setText("Ajouter");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ajouterclientjButton1.setBackground(new java.awt.Color(0, 204, 0));
+        ajouterclientjButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ajouterclientjButton1.setForeground(new java.awt.Color(255, 255, 255));
+        ajouterclientjButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ride_glide/Icon/addcus.png"))); // NOI18N
+        ajouterclientjButton1.setText("Ajouter");
+        ajouterclientjButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ajouterclientjButton1ActionPerformed(evt);
             }
         });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("prénom_client");
 
-        jButton2.setBackground(new java.awt.Color(51, 51, 255));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ride_glide/Icon/editcus.png"))); // NOI18N
-        jButton2.setText("Modifier");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        modifierclientjButton2.setBackground(new java.awt.Color(51, 51, 255));
+        modifierclientjButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        modifierclientjButton2.setForeground(new java.awt.Color(255, 255, 255));
+        modifierclientjButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ride_glide/Icon/editcus.png"))); // NOI18N
+        modifierclientjButton2.setText("Modifier");
+        modifierclientjButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                modifierclientjButton2ActionPerformed(evt);
             }
         });
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        prenomclientjTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                prenomclientjTextField3ActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(255, 0, 0));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ride_glide/Icon/remcus.png"))); // NOI18N
-        jButton3.setText("Supprimer");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        supprimerclientjButton3.setBackground(new java.awt.Color(255, 0, 0));
+        supprimerclientjButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        supprimerclientjButton3.setForeground(new java.awt.Color(255, 255, 255));
+        supprimerclientjButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ride_glide/Icon/remcus.png"))); // NOI18N
+        supprimerclientjButton3.setText("Supprimer");
+        supprimerclientjButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                supprimerclientjButton3ActionPerformed(evt);
             }
         });
 
@@ -225,15 +276,20 @@ public class Clients extends javax.swing.JFrame {
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ride_glide/Icon/backcus.png"))); // NOI18N
         jButton4.setText("Réinitialiser");
-
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                jButton4ActionPerformed(evt);
             }
         });
 
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        adresseclientjTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adresseclientjTextField4ActionPerformed(evt);
+            }
+        });
+
+        listeclientsjTable1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        listeclientsjTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null}
@@ -242,15 +298,20 @@ public class Clients extends javax.swing.JFrame {
                 "id_client", "nom_client", "prénom_client", "adresse", "num_tel", "émail", "num-permis"
             }
         ));
-        jTable1.setRowHeight(25);
-        jScrollPane1.setViewportView(jTable1);
+        listeclientsjTable1.setRowHeight(25);
+        listeclientsjTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listeclientsjTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(listeclientsjTable1);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("num_tel");
 
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        numtelclientjTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                numtelclientjTextField5ActionPerformed(evt);
             }
         });
 
@@ -264,9 +325,9 @@ public class Clients extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("num-permis");
 
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        numpermisjTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                numpermisjTextField7ActionPerformed(evt);
             }
         });
 
@@ -278,25 +339,20 @@ public class Clients extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(442, 442, 442)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(381, 381, 381))
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(46, 46, 46)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1013, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 179, Short.MAX_VALUE))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 6, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(442, 442, 442)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(idclientjTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(nomclientjTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(44, 44, 44)
                                         .addComponent(jLabel2)
@@ -306,7 +362,7 @@ public class Clients extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(267, 267, 267)
-                                        .addComponent(jButton3)
+                                        .addComponent(supprimerclientjButton3)
                                         .addGap(18, 18, 18)
                                         .addComponent(jButton4))
                                     .addGroup(layout.createSequentialGroup()
@@ -317,9 +373,9 @@ public class Clients extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(226, 226, 226)
-                                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(emailclientjTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(38, 38, 38)
-                                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(numpermisjTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addGroup(layout.createSequentialGroup()
@@ -332,27 +388,30 @@ public class Clients extends javax.swing.JFrame {
                                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(21, 21, 21)
-                                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(prenomclientjTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(adresseclientjTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(numtelclientjTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(20, 20, 20)
-                                .addComponent(jButton1)
+                                .addComponent(ajouterclientjButton1)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton2))
+                                .addComponent(modifierclientjButton2))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(366, 366, 366)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1013, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 842, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 816, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -365,69 +424,312 @@ public class Clients extends javax.swing.JFrame {
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField6)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                    .addComponent(emailclientjTextField6)
+                    .addComponent(numpermisjTextField7)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField3)
-                        .addComponent(jTextField2)
-                        .addComponent(jTextField4)
-                        .addComponent(jTextField5))
-                    .addComponent(jTextField1))
+                        .addComponent(prenomclientjTextField3)
+                        .addComponent(nomclientjTextField2)
+                        .addComponent(adresseclientjTextField4)
+                        .addComponent(numtelclientjTextField5))
+                    .addComponent(idclientjTextField1))
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ajouterclientjButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(modifierclientjButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(supprimerclientjButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(11, 11, 11))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void idclientjTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idclientjTextField1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_idclientjTextField1ActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void emailclientjTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailclientjTextField6ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_emailclientjTextField6ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void nomclientjTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomclientjTextField2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_nomclientjTextField2ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void modifierclientjButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifierclientjButton2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+            try {
+        // Vérifie si un client est sélectionné
+        if (idclientjTextField1.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Veuillez sélectionner un client à modifier.", "Erreur", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+        int idc = Integer.parseInt(idclientjTextField1.getText().trim());
+        String nc = nomclientjTextField2.getText().trim();
+        String pc = prenomclientjTextField3.getText().trim();
+        String adc = adresseclientjTextField4.getText().trim();
+        String numc = numtelclientjTextField5.getText().trim();
+        String emlc = emailclientjTextField6.getText().trim();
+        String nump = numpermisjTextField7.getText().trim();
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        if (nc.isEmpty() || pc.isEmpty() || adc.isEmpty() || numc.isEmpty() || emlc.isEmpty() || nump.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Tous les champs doivent être remplis.", "Erreur", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+        // Vérification des formats
+        try {
+            Long.parseLong(numc);
+            Integer.parseInt(nump);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Le numéro de téléphone ou le numéro de permis est invalide.", "Erreur de saisie", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+        Client updatedClient = new Client(idc, nc, pc, numc, adc, emlc, nump);
+        ClientDao clientdao = new ClientDao();
+        int res = clientdao.modifierClient(updatedClient);
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+        if (res == 1) {
+            JOptionPane.showMessageDialog(this, "Client modifié avec succès !", "Succès", JOptionPane.INFORMATION_MESSAGE);
+            this.clearform(); // Nettoie les champs après modification
+            afficherClients(); // Rafraîchir la liste des clients
+        } else {
+            JOptionPane.showMessageDialog(this, "Erreur lors de la modification du client.", "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(this, "Veuillez entrer des valeurs valides pour les champs numériques.", "Erreur de saisie", JOptionPane.WARNING_MESSAGE);
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(this, "Erreur SQL lors de la modification du client : " + ex.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+    }   catch (IOException ex) {
+            Logger.getLogger(Clients.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_modifierclientjButton2ActionPerformed
+
+    private void prenomclientjTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prenomclientjTextField3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_prenomclientjTextField3ActionPerformed
+
+    private void supprimerclientjButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprimerclientjButton3ActionPerformed
+        // TODO add your handling code here:
+        try {
+        // Vérifie si un client est sélectionné
+        if (idclientjTextField1.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Veuillez sélectionner un client à supprimer.", "Erreur", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        int idc = Integer.parseInt(idclientjTextField1.getText().trim());
+
+        // Demande confirmation avant suppression
+        int confirm = JOptionPane.showConfirmDialog(this, "Êtes-vous sûr de vouloir supprimer ce client ?", "Confirmation", JOptionPane.YES_NO_OPTION);
+        if (confirm != JOptionPane.YES_OPTION) {
+            return; // Annule la suppression si l'utilisateur clique sur "Non"
+        }
+
+        ClientDao clientdao = new ClientDao();
+        int res = clientdao.supprimerClient(idc);
+
+        if (res == 1) {
+            JOptionPane.showMessageDialog(this, "Client supprimé avec succès !", "Succès", JOptionPane.INFORMATION_MESSAGE);
+            this.clearform(); // Nettoie les champs après suppression
+            afficherClients(); // Rafraîchir la liste des clients
+        } else {
+            JOptionPane.showMessageDialog(this, "Erreur lors de la suppression du client.", "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(this, "ID du client invalide.", "Erreur de saisie", JOptionPane.WARNING_MESSAGE);
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(this, "Erreur SQL lors de la suppression du client : " + ex.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+    }   catch (IOException ex) {
+            Logger.getLogger(Clients.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_supprimerclientjButton3ActionPerformed
+
+    private void adresseclientjTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adresseclientjTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_adresseclientjTextField4ActionPerformed
+
+    private void numtelclientjTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numtelclientjTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_numtelclientjTextField5ActionPerformed
+
+    private void numpermisjTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numpermisjTextField7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_numpermisjTextField7ActionPerformed
+    
+private void afficherClients() throws IOException {
+    // Déclaration des variables nécessaires pour la gestion de la base de données
+    Connection Con = null;
+    Statement St = null;
+    ResultSet Rs = null;
+
+    try {
+        // Connexion à la base de données
+        Con = DriverManager.getConnection("jdbc:mysql://localhost:3307/java_database", "root", "");
+        
+        if (Con != null) {
+            System.out.println("Connexion réussie à la base de données");
+            St = Con.createStatement();
+        } else {
+            JOptionPane.showMessageDialog(null, "Erreur de connexion à la base de données.");
+            return;
+        }
+
+        // Exécution de la requête pour récupérer tous les clients
+        Rs = St.executeQuery("SELECT id, Nom, Prenom, num_tel, adresse, Email, Num_permis FROM Client");
+
+        // Créez un DefaultTableModel pour le JTable
+        ResultSetMetaData metaData = Rs.getMetaData();
+        int columnCount = metaData.getColumnCount();
+
+        // Créez un tableau pour les noms de colonnes
+        String[] columnNames = new String[columnCount];
+        for (int i = 1; i <= columnCount; i++) {
+            columnNames[i - 1] = metaData.getColumnName(i);
+        }
+
+        // Créez un tableau pour les données
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(columnNames);
+
+        // Ajoute des lignes au tableau
+        while (Rs.next()) {
+            String[] row = new String[columnCount];
+            for (int i = 1; i <= columnCount; i++) {
+                row[i - 1] = Rs.getString(i);
+            }
+            model.addRow(row);
+            System.out.println("Ligne ajoutée : " + Arrays.toString(row));  // Affiche la ligne ajoutée
+        }
+
+        // Affecte le modèle de table au JTable
+        listeclientsjTable1.setModel(model);
+        listeclientsjTable1.repaint(); 
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Erreur lors de l'affichage des clients : " + e.getMessage());
+    } finally {
+        try {
+            if (Rs != null) Rs.close();
+            if (St != null) St.close();
+            if (Con != null) Con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+    private void clearform(){
+    idclientjTextField1.setText("");  // On vide simplement le champ, pas besoin de conversion
+    nomclientjTextField2.setText("");
+    prenomclientjTextField3.setText("");
+    adresseclientjTextField4.setText("");
+    numtelclientjTextField5.setText("");  
+    emailclientjTextField6.setText("");
+    numpermisjTextField7.setText("");
+    }
+    private void ajouterclientjButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouterclientjButton1ActionPerformed
+        try {
+    // Récupération des valeurs des champs texte
+    int idc = Integer.parseInt(idclientjTextField1.getText().trim());  // Vérifie que l'ID est un nombre valide
+    String nc = nomclientjTextField2.getText().trim();  // Récupère et enlève les espaces inutiles
+    String pc = prenomclientjTextField3.getText().trim();
+    String adc = adresseclientjTextField4.getText().trim();
+    String numc = numtelclientjTextField5.getText().trim();  
+    String emlc = emailclientjTextField6.getText().trim();
+    String nump = numpermisjTextField7.getText().trim();
+
+    // Vérification des champs obligatoires (ne doivent pas être vides)
+    if (nc.isEmpty() || pc.isEmpty() || adc.isEmpty() || numc.isEmpty() || emlc.isEmpty() || nump.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Tous les champs doivent être remplis.", "Erreur", JOptionPane.ERROR_MESSAGE);
+        return;  // Arrête l'exécution si un champ est vide
+    }
+
+    // Vérification du format des numéros (téléphone et permis)
+    try {
+        long numTel = Long.parseLong(numc);  // Utiliser long pour le numéro de téléphone
+        int numPermis = Integer.parseInt(nump);  // Utiliser int pour le numéro de permis
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Le numéro de téléphone ou le numéro de permis est invalide.", "Erreur de saisie", JOptionPane.WARNING_MESSAGE);
+        return;  // Arrête l'exécution si les numéros sont mal formatés
+    }
+
+    // Création d'un objet Client avec les valeurs valides
+    Client newClient = new Client(idc, nc, pc, numc, adc, emlc, nump);
+
+    // Création de l'objet ClientDao et ajout du client à la base de données
+    ClientDao clientdao = new ClientDao();
+    int res = clientdao.ajouterClient(newClient);
+
+    // Vérification si l'ajout a réussi
+    if (res == 1) {
+        JOptionPane.showMessageDialog(this, "Client ajouté avec succès !", "Succès", JOptionPane.INFORMATION_MESSAGE);
+        DefaultTableModel model = (DefaultTableModel) listeclientsjTable1.getModel();
+            model.addRow(new Object[]{idc, nc, pc, numc, adc, emlc, nump});
+            
+            this.clearform(); // Effacer les champs après l'ajout
+     
+       
+    } else {
+        JOptionPane.showMessageDialog(this, "Erreur lors de l'ajout du client.", "Erreur", JOptionPane.ERROR_MESSAGE);
+    }
+
+} catch (NumberFormatException ex) {
+    // Gérer les erreurs liées aux champs numériques (par exemple, l'ID)
+    JOptionPane.showMessageDialog(this, "Veuillez entrer des valeurs valides pour les champs numériques.", "Erreur de saisie", JOptionPane.WARNING_MESSAGE);
+}catch (SQLException ex) {
+    // Gérer les erreurs liées à la base de données (SQL)
+    JOptionPane.showMessageDialog(this, "Erreur SQL lors de l'ajout du client : " + ex.getMessage(), "Erreur", JOptionPane.ERROR_MESSAGE);
+}
+        //newClient= new Client
+        //newClient= new Client
+        
+        //newClient= new Client
+
+
+        
+        //newClient= new Client
+    }//GEN-LAST:event_ajouterclientjButton1ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        Seconnecter Seconnecterframe=new Seconnecter();
+        Seconnecterframe.setVisible(true);
+        Seconnecterframe.pack();
+        Seconnecterframe.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void listeclientsjTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listeclientsjTable1MouseClicked
+        // TODO add your handling code here:
+        int selectedRow = listeclientsjTable1.getSelectedRow(); // Récupère la ligne sélectionnée
+    
+    if (selectedRow != -1) { // Vérifie si une ligne est sélectionnée
+        idclientjTextField1.setText(listeclientsjTable1.getValueAt(selectedRow, 0).toString());
+        nomclientjTextField2.setText(listeclientsjTable1.getValueAt(selectedRow, 1).toString());
+        prenomclientjTextField3.setText(listeclientsjTable1.getValueAt(selectedRow, 2).toString());
+        numtelclientjTextField5.setText(listeclientsjTable1.getValueAt(selectedRow, 3).toString());
+        adresseclientjTextField4.setText(listeclientsjTable1.getValueAt(selectedRow, 4).toString());
+        emailclientjTextField6.setText(listeclientsjTable1.getValueAt(selectedRow, 5).toString());
+        numpermisjTextField7.setText(listeclientsjTable1.getValueAt(selectedRow, 6).toString());
+    }
+    }//GEN-LAST:event_listeclientsjTable1MouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+       clearform();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -459,16 +761,22 @@ public class Clients extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Clients().setVisible(true);
+                try {
+                    new Clients().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(Clients.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JTextField adresseclientjTextField4;
+    private javax.swing.JButton ajouterclientjButton1;
+    private javax.swing.JTextField emailclientjTextField6;
+    private javax.swing.JTextField idclientjTextField1;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -476,6 +784,10 @@ public class Clients extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -487,13 +799,12 @@ public class Clients extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTable listeclientsjTable1;
+    private javax.swing.JButton modifierclientjButton2;
+    private javax.swing.JTextField nomclientjTextField2;
+    private javax.swing.JTextField numpermisjTextField7;
+    private javax.swing.JTextField numtelclientjTextField5;
+    private javax.swing.JTextField prenomclientjTextField3;
+    private javax.swing.JButton supprimerclientjButton3;
     // End of variables declaration//GEN-END:variables
 }

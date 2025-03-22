@@ -3,27 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Ride_glide%20-%20Copie/src/Ride_glide/Restitution.java</file>
-            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Ride_glide%20-%20Copie/src/Ride_glide/LoginAndRegister.java</file>
-            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Ride_glide%20-%20Copie/src/Ride_glide/Hyundai.java</file>
-            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Ride_glide%20-%20Copie/src/Ride_glide/Réservations.java</file>
-            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Ride_glide%20-%20Copie/src/Ride_glide/dashboardclient.java</file>
-            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Ride_glide%20-%20Copie/src/Ride_glide/Login.java</file>
-            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Ride_glide%20-%20Copie/src/Ride_glide/motdepasseoublie.java</file>
-            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Ride_glide%20-%20Copie/src/Ride_glide/Toyota.java</file>
-            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Ride_glide%20-%20Copie/src/Ride_glide/Sinscrire.java</file>
-            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Ride_glide%20-%20Copie/src/Ride_glide/Reset.java</file>
-            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Ride_glide%20-%20Copie/src/Ride_glide/Landrover.java</file>
-            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Ride_glide%20-%20Copie/src/Ride_glide/Mercedes.java</file>
-            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Ride_glide%20-%20Copie/src/Ride_glide/Clients.java</file>
-            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Ride_glide%20-%20Copie/src/Ride_glide/Peugeot.java</file>
-            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Ride_glide%20-%20Copie/src/Ride_glide/contacteznous.java</file>
-            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Ride_glide%20-%20Copie/src/Ride_glide/Accueil.java</file>
-            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Ride_glide%20-%20Copie/src/Ride_glide/Home.java</file>
-            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Ride_glide%20-%20Copie/src/Ride_glide/VerifyCode.java</file>
-            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Ride_glide%20-%20Copie/src/Ride_glide/SignUp.java</file>
-            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Ride_glide%20-%20Copie/src/Ride_glide/renault.java</file>
-            <file>file:/C:/Users/pc/Documents/NetBeansProjects/Ride_glide%20-%20Copie/src/Ride_glide/Seconnecter.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/projet_java/src/Ride_glide/Login.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/projet_java/src/Ride_glide/LoginAndRegister.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/projet_java/src/Ride_glide/Accueil.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/projet_java/src/Ride_glide/Clients.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/projet_java/src/Ride_glide/VerifyCode.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/projet_java/src/Ride_glide/Réservations.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/projet_java/src/Ride_glide/Client.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/projet_java/src/Ride_glide/ClientDao.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/projet_java/src/Ride_glide/DBconnexion.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/projet_java/src/Ride_glide/Seconnecter.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/projet_java/src/Ride_glide/Home.java</file>
         </group>
     </open-files>
 </project-private>

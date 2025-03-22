@@ -27,6 +27,7 @@ public class SignUp extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -50,7 +51,8 @@ public class SignUp extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(204, 0, 0));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc\\Documents\\NetBeansProjects\\Ride_glide\\src\\Ride_glide\\Icon\\logokk.png")); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\hp\\Documents\\NetBeansProjects\\projet_java\\src\\Ride_glide\\Icon\\logokk.png")); // NOI18N
+        jLabel9.setText("jLabel9");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -61,16 +63,23 @@ public class SignUp extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
                     .addComponent(jLabel1))
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(107, 107, 107)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8)
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(107, 107, 107)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel8))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addComponent(jLabel9)))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2);
@@ -239,7 +248,7 @@ public class SignUp extends javax.swing.JFrame {
     }
 
     // Connexion à la base de données
-    String SUrl = "jdbc:mysql://localhost:3306/ride_glide"; // Make sure the port is correct
+    String SUrl = "jdbc:mysql://localhost:3307/java_database"; // Make sure the port is correct
     String SUser = "root";
     String SPass = "";
 
@@ -250,7 +259,7 @@ public class SignUp extends javax.swing.JFrame {
         // Connexion à la base de données
         try (Connection con = DriverManager.getConnection(SUrl, SUser, SPass)) {
             // Préparer la requête d'insertion SQL pour l'admin
-            String query = "INSERT INTO admin (nom_admin, prénom_admin, émail_admin, mot_de_passe_adm) VALUES (?, ?, ?, ?)";
+            String query = "INSERT INTO admin (nom_admin, prenom_admin, email_admin, mot_de_passe_admin) VALUES (?, ?, ?, ?)";
             try (PreparedStatement pst = con.prepareStatement(query)) {
                 // Remplir les paramètres de la requête
                 pst.setString(1, nom);
@@ -302,6 +311,7 @@ public class SignUp extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

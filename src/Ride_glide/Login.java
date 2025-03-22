@@ -39,6 +39,7 @@ public class Login extends javax.swing.JFrame {
         Right = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         Left = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -61,7 +62,8 @@ public class Login extends javax.swing.JFrame {
         Right.setBackground(new java.awt.Color(204, 0, 0));
         Right.setPreferredSize(new java.awt.Dimension(400, 500));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\pc\\Documents\\NetBeansProjects\\Ride_glide\\src\\Ride_glide\\Icon\\logokk.png")); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\hp\\Documents\\NetBeansProjects\\projet_java\\src\\Ride_glide\\Icon\\logokk.png")); // NOI18N
+        jLabel7.setText("jLabel7");
 
         javax.swing.GroupLayout RightLayout = new javax.swing.GroupLayout(Right);
         Right.setLayout(RightLayout);
@@ -72,16 +74,23 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         RightLayout.setVerticalGroup(
             RightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RightLayout.createSequentialGroup()
-                .addGap(98, 98, 98)
                 .addGroup(RightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel5))
-                .addContainerGap(130, Short.MAX_VALUE))
+                    .addGroup(RightLayout.createSequentialGroup()
+                        .addGap(98, 98, 98)
+                        .addGroup(RightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5)))
+                    .addGroup(RightLayout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(jLabel7)))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
 
         jpanel1.add(Right);
@@ -239,7 +248,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Connexion à la base de données
-    String SUrl = "jdbc:mysql://localhost:3306/ride_glide"; 
+    String SUrl = "jdbc:mysql://localhost:3307/java_database"; 
     String SUser = "root";
     String SPass = "";
 
@@ -250,14 +259,14 @@ public class Login extends javax.swing.JFrame {
         // Connexion à la base de données
         try (Connection con = DriverManager.getConnection(SUrl, SUser, SPass)) {
             // Requête SQL sécurisée (évite l'injection SQL)
-            String query = "SELECT mot_de_passe_adm FROM admin WHERE nom_admin = ?";
+            String query = "SELECT mot_de_passe_admin FROM admin WHERE nom_admin = ?";
             
             try (PreparedStatement pst = con.prepareStatement(query)) {
                 pst.setString(1, nom);  // Remplissage du paramètre
                 
                 try (ResultSet rs = pst.executeQuery()) {
                     if (rs.next()) { // Si l'utilisateur existe
-                        String passDb = rs.getString("mot_de_passe_adm");
+                        String passDb = rs.getString("mot_de_passe_admin");
 
                         if (password.equals(passDb)) { // Vérification du mot de passe
                             JOptionPane.showMessageDialog(null, "Connexion réussie", "Succès", JOptionPane.INFORMATION_MESSAGE);
@@ -354,6 +363,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jpanel1;
     private javax.swing.JPasswordField mot_de_passe_adm;
     private javax.swing.JTextField nom_admin;

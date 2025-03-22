@@ -185,7 +185,7 @@ public class motdepasseoublie extends javax.swing.JFrame {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             // Connexion à la base de données
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ride_glide", "root", "");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3307/java_database", "root", "");
 
             // Vérification des champs vides
             if (nom.getText().trim().isEmpty() || 
